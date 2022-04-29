@@ -1,0 +1,83 @@
+[meta title:"My Idyll Post" description:"Short description of your project" /]
+
+[Header
+  fullWidth:true
+  title:"My Idyll Post"
+  subtitle:"Welcome to Idyll"
+  author:"Kinjal Shah"
+  authorLink:"https://idyll-lang.org"
+  date:`(new Date()).toDateString()`
+  background:"#222222"
+  color:"#ffffff"
+   /]
+
+
+## Introduction
+
+This is an Idyll post. It is generated via
+the file `index.idyll`. To compile this post using
+idyll, run the command `idyll` inside of this directory.
+
+
+Idyll posts are designed to support interaction and
+data-driven graphics.
+
+# BuiltIn Components: onClick
+
+[var name:"myVar" value:0 /]
+
+[button onClick:`myVar += 1`]Click Me![/button]
+
+Variable value: [Display value:myVar /]
+
+# BuiltIn Components: Radio
+
+[var name:"radioVal" value:"value1" /]
+[Radio value:selectVal options:`["value1", "value2"]`  /]
+
+
+## Vega-lite
+
+[data name:"ArgentinaCPI" source:"ArgentinaCPI.csv" /]
+
+[IdyllVegaLite data:ArgentinaCPI spec:`{
+  mark: "line",
+  encoding: {
+    x: {
+      field: "time",
+      type: "temporal",
+      axis: {title: "Year", format:"%Y"}
+    },
+    y: {
+      field: "value",
+      type: "quantitative",
+      axis: {title: "CPI"},
+    }
+  }
+}` /]
+
+
+Breif Explanation:
+
+1) Where did you get the dataset?
+
+A: The Argentina CPI dataset can be accessed at https://vincentarelbundock.github.io/Rdatasets/datasets.html.
+
+
+2) What is the data trying to measure?
+
+A: The graph is trying to measure the trends in Argentina's Consumer Price Index over the last few years.
+
+
+3) What are you trying to show in the plot?
+
+A: The information is intended to demonstrate a time series study of Argentina's CPI. The data spans the years 1970 to 1989. 
+We witness an exponential growth in the CPI trend through the plot because the CPI value varies a lot over this time period.
+
+
+4) What vega-lite mark(s) you used and why?
+
+A: The mark that was used was "line" to depict the trend in data.
+
+5) I have also tried to play around with dropdown and radio actions along with on click button action
+
